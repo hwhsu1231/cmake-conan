@@ -17,8 +17,15 @@ add_definitions("-std=c++11")
 
 include(conan.cmake)
 
-conan_cmake_configure(REQUIRES fmt/6.1.2 
-                      GENERATORS cmake_find_package)
+conan_version(CONAN_VERSION)
+if(CONAN_VERSION VERSION_LESS "2.0.0")
+    conan_cmake_configure(REQUIRES    fmt/6.1.2 
+                          GENERATORS  cmake_find_package)
+else()
+    conan_cmake_configure(REQUIRES    fmt/6.1.2
+                          GENERATORS  CMakeDeps
+                                      CMakeToolchain)
+endif()
 
 conan_cmake_autodetect(settings)
 
