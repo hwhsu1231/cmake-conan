@@ -37,4 +37,4 @@ conan_cmake_install(PATH_OR_REFERENCE .
 find_package(fmt)
 
 add_executable(main main.cpp)
-target_link_libraries(main fmt::fmt)                    
+target_link_libraries(main fmt::fmt)
